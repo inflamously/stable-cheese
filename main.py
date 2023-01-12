@@ -24,9 +24,22 @@ def unique_words(words_as_list):
 
 
 def caption_stripper(caption):
-    words_as_list = findall(r"[A-Za-z0-9]+", original_caption)
+    words_as_list = findall(r"[A-Za-z0-9]+", caption)
     resulting_words = unique_words(words_as_list)
     return " ".join(resulting_words)
+
+
+def interrogate_image(filepath):
+    with Image.open(filepath) as image:
+        original_caption = None
+        if model == 'fast':
+            original_caption = CI.interrogate_fast(image, max_flavors=1)
+        elif model == 'best':
+            original_caption = CI.interrogate(image, max_flavors=1)
+        stripped_caption = caption_stripper(original_caption)
+        output_path = os.path.join(SESSION_PATH, stripped_caption + "." + "png")
+        print("Image", index, "Output", output_path)
+        image.save(output_path, quality=100, subsampling=0)
     
 
 print("Loading Model")
@@ -41,13 +54,4 @@ if files and len(files) > 0:
     index = 0
     for filepath in files:
         index += 1
-        with Image.open(filepath) as image:
-            original_caption = None
-            if model == 'fast':
-                original_caption = CI.interrogate_fast(image, max_flavors=3)
-            elif model == 'best':
-                original_caption = CI.interrogate(image, max_flavors=3)
-            stripped_caption = caption_stripper(original_caption)
-            output_path = os.path.join(SESSION_PATH, stripped_caption + "." + "png")
-            print("Image", index, "Output", output_path)
-            image.save(output_path, quality=100, subsampling=0)
+        interrogate_image(filepath)
