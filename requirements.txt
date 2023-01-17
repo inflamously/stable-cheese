@@ -1,3 +1,4 @@
 #pip3 install torch==1.13.0+cu117 torchvision==0.14.0+cu117 torchaudio==0.13.0+cu117 --extra-index-url https://download.pytorch.org/whl/cu117
 -e git+https://github.com/pharmapsychotic/BLIP.git@lib#egg=blip
 clip-interrogator==0.3.2
+typer==0.7.0
