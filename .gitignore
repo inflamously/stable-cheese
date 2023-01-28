@@ -2,6 +2,7 @@ cache
 .vscode
 venv
 outputs
+license.py
 
 # Flutter
 .idea
