@@ -3,7 +3,7 @@ cache
 venv
 inputs
 outputs
-license.py
+downloads
 
 # Flutter
 .idea

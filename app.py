@@ -39,12 +39,18 @@ def parse_jsons(stdout: str):
 
 
 def download_zip(image_tuples: list[Tuple[_TemporaryFileWrapper, str, int, str]]):
-    temp = tempfile.TemporaryFile()
-    with zipfile.ZipFile(temp.file, 'w') as zip:
+    downloads_path = os.path.join(".", "downloads")
+    if not os.path.exists(downloads_path):
+        os.mkdir(downloads_path)
+    
+    # TODO: Write better duplicate handling.
+    file_path = os.path.join(downloads_path, "temp.zip")
+    with zipfile.ZipFile(file_path, 'w') as zip:
         for image_pair in image_tuples:
-            zip.write(image_pair[0].name, os.path.join(str(image_pair[2]) + "-" + image_pair[1], image_pair[3]))
+            zip.write(image_pair[0].name, os.path.join("images", str(image_pair[2]) + "-" + image_pair[1] + image_pair[3]))
+            
     return {
-        zip_file: gr.update(value=temp.name, visible=True)
+        zip_file: gr.update(value=file_path, visible=True)
     }
 
 
@@ -70,6 +76,7 @@ with gr.Blocks() as app:
         parsed_json_array: list[list[dict[str, Any]]] = [
             loads(json) for json in jsons]
         output_images = []
+        output_json = []
         caption_state_value = []
         for json in parsed_json_array:
             image = images[int(json["index"]) - 1]  # type: ignore
@@ -81,7 +88,12 @@ with gr.Blocks() as app:
                 image.name,
                 caption
             ))
-
+            
+            output_json.append((
+                os.path.basename(image.name),
+                caption
+            ))
+            
             caption_state_value.append((
                 image,
                 caption,
@@ -91,7 +103,7 @@ with gr.Blocks() as app:
 
         return {
             gallery: output_images,
-            captions: output_images,
+            captions: output_json,
             button_download_zip: gr.update(visible=True),
             caption_state: caption_state_value
         }
