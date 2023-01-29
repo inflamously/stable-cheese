@@ -50,8 +50,7 @@ def interrogate_image(file_index: int, filepath: str, CI: Interrogator, model_ty
             print("Image", file_index, "Output", output_path)
             image.save(output_path, quality=100, subsampling=0)
         else:
-            print("{}".format(
-                dumps({"index": file_index, "caption": stripped_caption, "filetype": ".png"})))
+            return dumps({"index": file_index, "caption": stripped_caption, "filetype": ".png"})
 
 
 def create_session_dirs(output_path, session_path):
@@ -87,9 +86,14 @@ def interrogate(files: List[str], model_type: ModelType = ModelType.fast, output
         print("On first run this step it can take a while because the models have to process the tokens for the interrogating once")
         CI = Interrogator(Config(
             clip_model_name="ViT-H-14/laion2b_s32b_b79k", blip_max_length=15, device="cuda"))
+        json_output = []
+        print("Processing started")
         for filepath in files:
             index += 1
-            interrogate_image(index, filepath, CI, model_type, session_path)
+            json_output.append(interrogate_image(index, filepath, CI, model_type, session_path))
+        print("Processing finshed")
+        print(dumps(json_output))
+        print("")
 
 
 if __name__ == '__main__':
