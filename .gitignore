@@ -1,6 +1,7 @@
 cache
 .vscode
 venv
+inputs
 outputs
 license.py
 
