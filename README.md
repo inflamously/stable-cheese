@@ -10,13 +10,13 @@ This program has an optionated way on captioning images. May open it up more by 
 
 Well you can either use it as a CLI tool using following commands:
 
-##### Installation
+
+#### Installation
 
 ```
 py -m venv venv
 py -m pip install -r requirements.txt
 ```
-
 
 
 ##### Output JSON in Terminal for CLI usage
@@ -41,16 +41,17 @@ This creates an "outputs" directory with a new subfolder (current date & time) w
 py main.py C:\Users\<username>\OneDrive\Pictures\test_picture_01.png C:\Users\<username>\OneDrive\Pictures\test_picture_02.png --output_files
 ```
 
+
 ##### Or by directly running the gradio app:
 
 ```bash
 py app.py # Starts an gradio instance which can be accessed via browser
 ```
 
-
-
 #### App.py
 
+Frontend for spaces. Simplifies using the CLI tool.
 
+![Image of app.py](app.png)
 
 * Image by [Michelle McEwen](https://unsplash.com/@michellem18?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText) on [Unsplash](https://unsplash.com/de/fotos/zZbcIw0LHb4?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText)
