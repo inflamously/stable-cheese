@@ -50,7 +50,7 @@ def interrogate_image(file_index: int, filepath: str, CI: Interrogator, model_ty
             print("Image", file_index, "Output", output_path)
             image.save(output_path, quality=100, subsampling=0)
         else:
-            return json.dumps({"index": file_index, "caption": stripped_caption, "filetype": ".png"}, ensure_ascii=False)
+            return {"index": file_index, "caption": stripped_caption, "filetype": ".png"}
 
 
 def create_session_dirs(output_path, session_path):
@@ -72,6 +72,7 @@ def filter_files(raw_filenames: list[str]):
     return list(filter(lambda file: any([extension in file.lower() for extension in valid_extensions]), raw_filenames))
 
 
+# TODO: Write Unit Tests
 @APP.command()
 def interrogate(files: List[str], model_type: ModelType = ModelType.fast, output_files: bool = typer.Option(False)):
     if files and len(files) > 0:
@@ -89,23 +90,28 @@ def interrogate(files: List[str], model_type: ModelType = ModelType.fast, output
 
         print("Warming up stable-cheese")
         print("On first run this step it can take a while because the models have to process the tokens for the interrogating once")
-        CI = Interrogator(Config(clip_model_name="ViT-H-14/laion2b_s32b_b79k", blip_max_length=15, device="cuda"))
-        json_output = []
+
+        CI = Interrogator(Config(
+            clip_model_name="ViT-H-14/laion2b_s32b_b79k", blip_max_length=15, device="cuda"))
+        json_data = []
         print("Processing started")
         for filepath in files:
             index += 1
-            json_output.append(interrogate_image(index, filepath, CI, model_type, session_path))
+            json_data.append(interrogate_image(
+                index, filepath, CI, model_type, session_path))
         print("Processing finshed")
-        print(json_output)
+        print(json.dumps(json_data))
         print("")
-        
 
+
+# TODO: Write Unit Tests
 @APP.command()
 def interrogate_folder(folder_path: str, model_type: ModelType = ModelType.fast, output_files: bool = typer.Option(False)):
     if folder_path and len(folder_path) > 0:
         raw_filenames = os.listdir(folder_path)
         image_filenames = filter_files(raw_filenames)
-        image_paths = [os.path.join(folder_path, image_filename) for image_filename in image_filenames]
+        image_paths = [os.path.join(folder_path, image_filename)
+                       for image_filename in image_filenames]
         interrogate(image_paths, model_type, output_files)
 
 
