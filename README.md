@@ -54,4 +54,4 @@ Frontend for spaces. Simplifies using the CLI tool.
 
 ![Image of app.py](app.png)
 
-* Image by [Michelle McEwen](https://unsplash.com/@michellem18?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText) on [Unsplash](https://unsplash.com/de/fotos/zZbcIw0LHb4?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText)
+* Gallery Image of Sailboat by [Michelle McEwen](https://unsplash.com/@michellem18?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText) on [Unsplash](https://unsplash.com/de/fotos/zZbcIw0LHb4?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText)
