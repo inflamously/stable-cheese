@@ -4,6 +4,8 @@ venv
 inputs
 outputs
 downloads
+logs
+test/temp
 
 **/*__pycache__
 
