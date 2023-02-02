@@ -5,6 +5,8 @@ inputs
 outputs
 downloads
 
+**/*__pycache__
+
 # Flutter
 .idea
 .vscode

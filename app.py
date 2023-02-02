@@ -10,7 +10,7 @@ import os
 import zipfile
 
 
-VERSION = "1.1"
+VERSION = "0.1"
 REGEXP_BASIC_JSON_PARSER = re.compile(r"\[.*\]", re.MULTILINE)
 
 
@@ -62,6 +62,7 @@ def download_zip(image_tuples: list[Tuple[_TemporaryFileWrapper, str, int, str]]
         os.mkdir(downloads_path)
 
     # TODO: Write better duplicate handling.
+    # TODO: Create datetime or some other UID or the temp file gets accidently delete on next download button click.?
     file_path = os.path.join(downloads_path, "temp.zip")
     with zipfile.ZipFile(file_path, 'w') as zip:
         for image_pair in image_tuples:
