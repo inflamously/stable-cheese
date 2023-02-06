@@ -50,7 +50,8 @@ py app.py # Starts an gradio instance which can be accessed via browser
 
 #### App.py
 
-Frontend for spaces. Simplifies using the CLI tool.
+Frontend for hugginface spaces.
+Simplify CLI tool usage.
 
 ![Image of app.py](app.png)
 

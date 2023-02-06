@@ -4,6 +4,10 @@ venv
 inputs
 outputs
 downloads
+logs
+test/temp
+
+**/*__pycache__
 
 # Flutter
 .idea
