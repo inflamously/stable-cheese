@@ -1,5 +1,5 @@
 import os
-from src.interrogation import save_captioned_image, save_image
+from stable_cheese.src.interrogation import save_captioned_image, save_image
 from PIL import Image
 
 TEST_TEMP_FOLDER = './test/temp'

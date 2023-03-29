@@ -1,0 +1,18 @@
+[build-system]
+requires = ["setuptools"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "stable-cheese"
+version = "1.0"
+authors = [
+  { name = "Inflamously (David Dembinski)", email = "david.dembinski@inflamous.eu" },
+]
+description = "TODO: Package description"
+requires-python = ">=3.9"
+
+[project.scripts]
+stable-cheese = "stable_cheese.main:app"
+
+[tool.setuptools.packages.find]
+where = ["."]

@@ -1,7 +1,7 @@
 import os
 from typing import Any, Union
-from src.caption_tools import optimize_caption
-from src.logging import LOGGER
+from .caption_tools import optimize_caption
+from .logging import LOGGER
 from clip_interrogator import Interrogator
 from PIL import Image
 

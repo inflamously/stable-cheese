@@ -1,4 +1,6 @@
 cache
+.idea
+.metadata
 .vscode
 venv
 inputs
@@ -6,55 +8,5 @@ outputs
 downloads
 logs
 test/temp
-
 **/*__pycache__
-
-# Flutter
-.idea
-.vscode
-.metadata
-
-# Miscellaneous
-stable_cheese_flutter/*.class
-stable_cheese_flutter/*.log
-stable_cheese_flutter/*.pyc
-stable_cheese_flutter/*.swp
-stable_cheese_flutter/.DS_Store
-stable_cheese_flutter/.atom/
-stable_cheese_flutter/.buildlog/
-stable_cheese_flutter/.history
-stable_cheese_flutter/.svn/
-stable_cheese_flutter/migrate_working_dir/
-
-# IntelliJ related
-stable_cheese_flutter/*.iml
-stable_cheese_flutter/*.ipr
-stable_cheese_flutter/*.iws
-stable_cheese_flutter/.idea/
-
-# The .vscode folder contains launch configuration and tasks you configure in
-# VS Code which you may wish to be included in version control, so this line
-# is commented out by default.
-#.vscode/
-
-# Flutter/Dart/Pub related
-stable_cheese_flutter/**/doc/api/
-stable_cheese_flutter/**/ios/Flutter/.last_build_id
-stable_cheese_flutter/.dart_tool/
-stable_cheese_flutter/.flutter-plugins
-stable_cheese_flutter/.flutter-plugins-dependencies
-stable_cheese_flutter/.packages
-stable_cheese_flutter/.pub-cache/
-stable_cheese_flutter/.pub/
-stable_cheese_flutter/build/
-
-# Symbolication related
-stable_cheese_flutter/app.*.symbols
-
-# Obfuscation related
-stable_cheese_flutter/app.*.map.json
-
-# Android Studio will place build artifacts here
-stable_cheese_flutter/android/app/debug
-stable_cheese_flutter/android/app/profile
-stable_cheese_flutter/android/app/release
+*.egg-info

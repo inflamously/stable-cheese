@@ -1,14 +1,14 @@
-from src.enum_model_type import ModelType
+from stable_cheese.src.enum_model_type import ModelType
 import os
 import time
 import typer
 import json
 from clip_interrogator import Interrogator, Config
-from src.interrogation import create_session_dirs, interrogate_image
-from src.logging import LOGGER, register_file_logger
+from .src.interrogation import create_session_dirs, interrogate_image
+from .src.logging import LOGGER, register_file_logger
 
 
-APP = typer.Typer()
+app = typer.Typer()
 
 
 def filter_files(raw_filenames: list[str]):
@@ -17,7 +17,7 @@ def filter_files(raw_filenames: list[str]):
 
 
 # TODO: Write Unit Tests
-@APP.command()
+@app.command()
 def interrogate(files: list[str], model_type: ModelType = ModelType.fast, output_files: bool = typer.Option(False), log_file: bool = typer.Option(False)):
     if log_file:
         register_file_logger(LOGGER)
@@ -55,7 +55,7 @@ def interrogate(files: list[str], model_type: ModelType = ModelType.fast, output
 
 
 # TODO: Write Unit Tests
-@APP.command()
+@app.command()
 def interrogate_folder(folder_path: str, model_type: ModelType = ModelType.fast, output_files: bool = typer.Option(False), log_file: bool = typer.Option(False)):
     if log_file:
         register_file_logger(LOGGER)
@@ -66,7 +66,3 @@ def interrogate_folder(folder_path: str, model_type: ModelType = ModelType.fast,
                        for image_filename in image_filenames]
         LOGGER.info("Interrogating {} image files".format(len(image_paths)))
         interrogate(image_paths, model_type, output_files, log_file=False)
-
-
-if __name__ == '__main__':
-    APP()
