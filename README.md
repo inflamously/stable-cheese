@@ -1,7 +1,7 @@
 # Archived
 
 Replaced with a new CLI tool that does its job way better and has more options.
-See [https://github.com/inflamously/joy-caption-cli](joy-caption-cli)
+See [joy-caption-cli](https://github.com/inflamously/joy-caption-cli)
 
 # Stable Cheese Interrogator
 
