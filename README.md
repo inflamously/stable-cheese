@@ -1,3 +1,8 @@
+# Archived
+
+Replaced with a new CLI tool that does its job way better and has more options.
+See [https://github.com/inflamously/joy-caption-cli](joy-caption-cli)
+
 # Stable Cheese Interrogator
 
 A minimal app using [clip-interrogator](https://github.com/pharmapsychotic/clip-interrogator) and [blip](https://github.com/salesforce/BLIP) for captioning lots of images quickly.
